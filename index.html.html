@@ -1,0 +1,207 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+		<link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+		<audio id="sound_tag" src="https://drive.google.com/file/d/1s0iHn4fMd7BzQ08C2QngIRHVtWmrdsxk/view?usp=sharing" preload="auto"></audio>
+	</head>
+	<body>
+		
+		<section class= is-centered  >
+			<section class="nes-balloon  nes-pointer nes-container ">
+
+
+
+				<section class="nes-container">
+					<section class="message-list">
+						<section class="message -left">
+							<i class="nes-bcrikko"></i>
+							<!-- Balloon -->
+							<div class="nes-balloon from-left">
+								<p id="hellotext"> </p>
+							</div>
+						</section>
+
+						<section class="message -right  hangontexthideshow">
+							<!-- Balloon -->
+							<div class="nes-balloon from-right">
+								<!--  <p>Site under Construction Please come atleast 1 month later</p> -->
+								<div class="nes-field">
+									<label for="name_field" id="hangontext"> </label>
+									<!--<input type="text" id="name_field" class="nes-input">  // input field for text--> 
+								</div>
+							</div>
+							<i class="nes-bcrikko"></i>
+						</section>
+                       <section class="message -left  goodprocrastinatortexthideshow">
+							<i class="nes-bcrikko"></i>
+							<!-- Balloon -->
+							<div class="nes-balloon from-left">
+								<p id="goodprocrastinatortext"></p>
+							</div>
+						</section>
+
+						<section class="message -right  wonderingtexthideshow">
+							<!-- Balloon -->
+							<div class="nes-balloon from-right">
+								<!--  <p>Site under Construction Please come atleast 1 month later</p> -->
+								<div class="nes-field">
+									<label for="name_field" id="wonderingtext"></label>
+									<!--<input type="text" id="name_field" class="nes-input">  // input field for text--> 
+								</div>
+							</div>
+							<i class="nes-bcrikko"></i>
+						</section>
+
+					
+
+
+					
+
+
+						<span id=""> </span>
+					</section>
+				</section>
+
+
+				<script
+				src="https://code.jquery.com/jquery-3.6.0.min.js"
+
+				integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+				crossorigin="anonymous">
+
+			</script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+
+
+			<script>
+
+				var myVar;
+
+
+				$( document ).ready(function() {
+                    
+     
+                         
+
+                    
+
+
+
+					$('.hangontexthideshow').hide();
+					$('.wonderingtexthideshow').hide();	
+					$('.goodprocrastinatortexthideshow').hide();
+    
+  
+	//document.getElementById('clip1').style.pointerEvents = 'none';
+	$('#continue-button').hide();
+	myVar=setTimeout(function(){ $('#continue-button').show(); }, 50000);
+		//clearTimeout(myVar);// used to prevent function from running.
+
+
+
+       // Calculating speed of mouse pointer
+       var timestamp = 0;
+       var mY = 0;
+
+       $(document).mousemove(function(e) {
+       	var now = Date.now();
+       	currentmY = e.screenY;
+
+       	var dt = now - timestamp;
+       	var distance = Math.abs(currentmY - mY);
+       	var speed = Math.round(distance / dt * 1000);
+       	//console.log(dt, distance, speed);
+			//document.getElementById("pointerspeed").innerHTML = speed;// speed is measured in pixels per second
+
+			if(speed>320)
+			{
+			//alert("Are you making the next fast and furious?") // activate the alert 
+			$('body').mouseover(function(){
+				$(this).css({cursor: 'none'});
+			});
+		}
+
+		mY = currentmY;
+		timestamp = now;
+	});
+
+var source = "https://drive.google.com/file/d/1s0iHn4fMd7BzQ08C2QngIRHVtWmrdsxk/view?usp=sharing";
+ var audio = document.createElement("audio");
+ //
+ audio.autoplay = true;
+ //
+ audio.load()
+ audio.addEventListener("load", function() { 
+     audio.play(); 
+ }, true);
+ audio.src = source;
+
+
+
+
+
+
+
+   });
+// creating a typing effect
+var i=0,hellotext;
+var j=0,hangontext;
+var k=0,goodprocrastinatortext;
+var l=0,wonderingtext;
+hellotext=" Hello "
+hangontext ="Hang on.. I have to finish something it will take just a moment ..and ,Done !pheww"
+goodprocrastinatortext="  I once spent 6 hours reading about how to be a good procrastinator"
+wonderingtext="May be you are wondering how to be a good procrastinator"
+function typing()
+{
+	
+	if(i<hellotext.length)
+	{
+		$('#sound_tag')[0].play();
+		document.getElementById("hellotext").innerHTML+= hellotext.charAt(i);
+		i++
+		setTimeout(typing,500);
+	}
+
+	
+
+	if(j<hangontext.length && i>4)// i>4 when it shows hello after then it is going to show the next line
+	{
+		$('.hangontexthideshow').show();
+
+		document.getElementById("hangontext").innerHTML+= hangontext.charAt(j);
+		j++
+		setTimeout(typing,600);
+	}
+
+   
+	if(k<goodprocrastinatortext.length && j>80)// i>4 when it shows hello after then it is going to show the next line
+	{
+		$('.goodprocrastinatortexthideshow').show();
+		document.getElementById("goodprocrastinatortext").innerHTML+= goodprocrastinatortext.charAt(k);
+		k++
+		setTimeout(typing,600);
+	}
+
+
+	if(l<wonderingtext.length && k>67)// i>4 when it shows hello after then it is going to show the next line
+	{
+        
+	
+		
+
+		$('.wonderingtexthideshow').show();
+		document.getElementById("wonderingtext").innerHTML+= wonderingtext.charAt(l);
+		l++;
+		setTimeout(typing,600);
+	}
+}
+
+typing();
+
+</script>
+
+</body>
+</html>
